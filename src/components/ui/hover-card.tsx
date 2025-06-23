@@ -32,7 +32,7 @@ function HoverCardContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          "bg-black text-center text-[#c3c3c3] text-sm font-robo z-50 w-20 data-[state=open]:animate-fade-in-scale data-[state=closed]:animate-fade-out origin-(--radix-hover-card-content-transform-origin: top) rounded-md border-1 border-[#353535] shadow-md outline-hidden",
+          "bg-black text-center text-[#c3c3c3] text-sm font-robo z-20 w-20 data-[state=open]:animate-fade-in-scale data-[state=closed]:animate-fade-out origin-(--radix-hover-card-content-transform-origin: top) rounded-md border-1 border-[#353535] shadow-md outline-hidden",
           className
         )}
         {...props}

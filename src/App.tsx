@@ -1,15 +1,11 @@
-// import React from 'react'
-
 import Navbar from "./components/Navbar"
+import Background from "./components/Bg"
 
 function App() {
-
   return (
     <>
-      <div className='mx-2 my-3 bg-black h-screen max-w-screen rounded-lg'>
-        <Navbar></Navbar>
-        
-      </div>
+      <Background />
+      <Navbar />
     </>
   )
 }
