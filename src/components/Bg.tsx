@@ -53,7 +53,7 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
 
     const shineInterval = setInterval(() => {
       // Select 5-6 random dots to shine
-      const numDotsToShine = Math.floor(Math.random() * 2) + 5; // 5 or 6 dots
+      const numDotsToShine = Math.floor(Math.random() * 2) + 10; // 5 or 6 dots
       const availableDots = Array.from({ length: dots.length }, (_, i) => i);
       const selectedDots = new Set<number>();
 

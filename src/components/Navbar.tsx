@@ -4,6 +4,8 @@ import Project from "../assets/Projects"
 import About from "../assets/About"
 import GlitchText from "./ui/GlitchText"
 import { HoverCard, HoverCardTrigger, HoverCardContent } from "./ui/hover-card"
+import { ToastContainer, toast } from "react-toastify"
+
 
 function Navbar() {
     const [isVisible, setIsVisible] = useState(false);
@@ -30,8 +32,22 @@ function Navbar() {
 
     return (
         <>
+            <ToastContainer
+                position="top-center"
+                autoClose={3000}
+                hideProgressBar={false}
+                newestOnTop={false}
+                closeOnClick={false}
+                closeButton={false}
+                rtl={false}
+                pauseOnFocusLoss
+                draggable
+                pauseOnHover
+                theme="dark"
+                style={{}}
+            />
             <div
-                className={`fixed h-22 top-0 left-0 right-0 z-1 backdrop-blur-sm bg-linear-to-b from-white/10 to-white/5  shadow-lg transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
+                className={`fixed h-22 top-0 left-0 right-0 z-1 backdrop-blur-sm bg-linear-to-b from-white/15 to-white/7  shadow-lg transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
                     }`}
             >
             </div>
@@ -46,7 +62,23 @@ function Navbar() {
                 </div>
                 <div className="inline-flex items-start justify-start gap-32 w-220 font-robo font-normal text-[#c3c3c3] text-xs">
                     <span className="w-52"><GlitchText /></span>
-                    <span>umair030703@gmail.com</span>
+                    <span className="cursor-pointer" onClick={
+                        () => {
+                            navigator.clipboard.writeText("umair030703@gmail.com");
+                            toast.success('Email Copied', {
+                                position: "top-center",
+                                autoClose: 1000,
+                                hideProgressBar: true,
+                                closeOnClick: false,
+                                pauseOnHover: false,
+                                draggable: false,
+                                closeButton: false,
+                                progress: undefined,
+                                theme: "dark",
+                                style: { width: "160px" }
+                            });
+                        }
+                    }>umair030703@gmail.com</span>
                 </div>
                 <nav className="w-fit bg-linear-to-b from-black z-3 to-[#1d1d1d] py-2 rounded-md border-1 border-[#353535]">
                     <HoverCard openDelay={0}>
