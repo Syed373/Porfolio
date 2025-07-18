@@ -1,114 +1,44 @@
-import { useState, useEffect } from "react"
-import Home from "../assets/Home"
-import Project from "../assets/Projects"
-import About from "../assets/About"
-import GlitchText from "./ui/GlitchText"
-import { HoverCard, HoverCardTrigger, HoverCardContent } from "./ui/hover-card"
-import { ToastContainer, toast } from "react-toastify"
+import {useEffect, useState} from 'react'
+import Home from '../icons/Home-icon'
+import Project from '../icons/Projects-icon'
+import Contact from '../icons/Contact-icon'
 
+const LinkStyle = 'p- rounded-full hover:bg-white/10 hover:shadow-lg focus:outline-none focus:ring-2 focus:ring-white/20 '
+
+const Liststyle = 'flex flex-col justify-center items-center transition-all duration-300 ease-out transform hover:translate-y-1 hover:scale-110'
 
 function Navbar() {
-    const [isVisible, setIsVisible] = useState(false);
-    const [isHovered, setIsHovered] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false)
+  
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollHeight = window.scrollY
+      if (scrollHeight >= 56) {
+        setIsScrolled(true)
+      } else {
+        setIsScrolled(false)
+      }
+    }
 
-    useEffect(() => {
-        const handleScroll = () => {
-            const scrollThreshold = 20;
-            const scrollY = window.scrollY;
-
-            if (scrollY > scrollThreshold) {
-                setIsVisible(true);
-            } else {
-                setIsVisible(false);
-            }
-        };
-
-        window.addEventListener('scroll', handleScroll);
-
-        return () => {
-            window.removeEventListener('scroll', handleScroll);
-        };
-    }, []);
-
-    return (
-        <>
-            <ToastContainer
-                position="top-center"
-                autoClose={3000}
-                hideProgressBar={false}
-                newestOnTop={false}
-                closeOnClick={false}
-                closeButton={false}
-                rtl={false}
-                pauseOnFocusLoss
-                draggable
-                pauseOnHover
-                theme="dark"
-                style={{}}
-            />
-            <div
-                className={`fixed h-22 top-0 left-0 right-0 z-1 backdrop-blur-sm bg-linear-to-b from-white/15 to-white/7  shadow-lg transition-transform duration-300 ease-in-out ${isVisible ? 'translate-y-0' : '-translate-y-full'
-                    }`}
-            >
-            </div>
-            <nav className='h-24 min-w-[99%] left-2 fixed z-10 top-3 rounded-lg flex justify-between items-center px-4 text-white'>
-                <div className="mt-2 transition-all duration-300 " onMouseEnter={() => setIsHovered(true)} onMouseLeave={() => setIsHovered(false)}>
-                    <a href="/" className="relative inline-flex items-center ">
-                        <span><img className="h-[10vh] max-w-[20vh]" src="/Name.svg" alt="Name" /></span>
-                        <span className={`font-robo font-normal text-[#c3c3c3] text-xs ml-4 transition-all duration-300 ease-out transform ${isHovered ? 'opacity-100 translate-x-0 scale-100' : 'opacity-0 -translate-x-4 scale-75'}`}>
-                            Hi 👋
-                        </span>
-                    </a>
-                </div>
-                <div className="inline-flex items-start justify-start gap-32 w-220 font-robo font-normal text-[#c3c3c3] text-xs">
-                    <span className="w-52"><GlitchText /></span>
-                    <span className="cursor-pointer" onClick={
-                        () => {
-                            navigator.clipboard.writeText("umair030703@gmail.com");
-                            toast.success('Email Copied', {
-                                position: "top-center",
-                                autoClose: 1000,
-                                hideProgressBar: true,
-                                closeOnClick: false,
-                                pauseOnHover: false,
-                                draggable: false,
-                                closeButton: false,
-                                progress: undefined,
-                                theme: "dark",
-                                style: { width: "160px" }
-                            });
-                        }
-                    }>umair030703@gmail.com</span>
-                </div>
-                <nav className="w-fit bg-linear-to-b from-black z-3 to-[#1d1d1d] py-2 rounded-md border-1 border-[#353535]">
-                    <HoverCard openDelay={0}>
-                        <HoverCardTrigger>
-                            <a className="relative px-11 py-1 m-1 rounded-sm bg-[#353535] border-1 border-[#353535]" href="/"><Home /></a>
-                        </HoverCardTrigger>
-                        <HoverCardContent>
-                            Home
-                        </HoverCardContent>
-                    </HoverCard>
-                    <HoverCard openDelay={0}>
-                        <HoverCardTrigger>
-                            <a className="relative px-11 py-1 rounded-sm bg-[#353535] border-1 border-[#353535]" href=""><Project /></a>
-                        </HoverCardTrigger>
-                        <HoverCardContent>
-                            Work
-                        </HoverCardContent>
-                    </HoverCard>
-                    <HoverCard openDelay={0}>
-                        <HoverCardTrigger>
-                            <a className="relative px-11 py-1 m-1 rounded-sm bg-[#353535] border-1 border-[#353535]" href="/"><About /></a>
-                        </HoverCardTrigger>
-                        <HoverCardContent>
-                            About
-                        </HoverCardContent>
-                    </HoverCard>
-                </nav>
-            </nav>
-        </>
-    )
+    window.addEventListener('scroll', handleScroll)
+    
+    // Cleanup function to remove event listener
+    return () => {
+      window.removeEventListener('scroll', handleScroll)
+    }
+  }, [])
+  
+  return (
+    <div className={`fixed inset-0 z-20 transform transition-all duration-300 ease-in-out ${isScrolled ? 'max-w-sm rounded-full bg-black' : ' rounded-xl max-w-3xl bg-[#c2c2c220]'} flex justify-center items-center mx-auto border-1 border-white/30 shadow-sm shadow-white/50 h-fit my-2  backdrop-blur-2xl `}>
+      <div className='w-full flex justify-center items-center'>
+        <ul className='h-12 mt-4 px-2 rounded-full w-fit list-none flex justify-center items-center gap-8 text-primary-foreground'>
+          <li className={Liststyle}><a className={LinkStyle} href="/"><Home /></a>Home</li>
+          <li className={Liststyle}><a className={LinkStyle} href="/work"><Project /></a>Projects</li>
+          <li className={Liststyle}><a className={LinkStyle} href="/contact"><Contact /></a>Connect</li>
+        </ul>
+      </div>
+    </div>
+  )
 }
 
 export default Navbar

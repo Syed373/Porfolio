@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
+import MouseTrail from './ui/MouseTrail';
 
 interface Dot {
   id: number;
@@ -26,7 +27,7 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
     const height = container.offsetHeight;
 
     // Calculate number of dots based on screen area (roughly 1 dot per 15000 pixels)
-    const dotCount = Math.floor((width * height) / 15000);
+    const dotCount = Math.floor((width * height) / 4000);
 
     const newDots: Dot[] = [];
 
@@ -35,7 +36,7 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
         id: i,
         x: Math.random() * (width - 20), // Subtract dot size to prevent overflow
         y: Math.random() * (height - 20),
-        size: Math.random() * 4 + 2 // Random size between 2-6px
+        size: Math.random() * 4 + 3 
       });
     }
 
@@ -53,7 +54,7 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
 
     const shineInterval = setInterval(() => {
       // Select 5-6 random dots to shine
-      const numDotsToShine = Math.floor(Math.random() * 2) + 10; // 5 or 6 dots
+      const numDotsToShine = Math.floor(Math.random() * 2) + 15; 
       const availableDots = Array.from({ length: dots.length }, (_, i) => i);
       const selectedDots = new Set<number>();
 
@@ -95,9 +96,10 @@ const Background: React.FC<BackgroundProps> = ({ children }) => {
   return (
     <div
       ref={containerRef}
-      className="fixed inset-2 rounded-lg bg-black overflow-hidden pointer-events-none"
+      className="fixed inset-0 bg-black overflow-hidden pointer-events-none"
       style={{ zIndex: -1 }}
     >
+      <MouseTrail />
       {dots.map((dot) => (
         <div
           key={dot.id}

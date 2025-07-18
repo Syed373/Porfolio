@@ -1,68 +1,11 @@
-import Navbar from "./components/Navbar"
 import Background from "./components/Bg"
+import Main from "./components/Main"
 
 function App() {
   return (
     <>
-      <Background />
-      <Navbar />
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
-      <div>hv</div>
+        <Background />
+        <Main />
     </>
   )
 }
