@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from 'react';
 
 type GlitchTextProps = {
-  Sentences: string[]; 
+  Sentences: string[];
+  time: number;
 };
 
-function GlitchText({Sentences}: GlitchTextProps) {
+function GlitchText({Sentences, time}: GlitchTextProps) {
 
     const [currentIndex, setCurrentIndex] = useState(0);
     const [isGlitching, setIsGlitching] = useState(false);
@@ -72,7 +73,7 @@ function GlitchText({Sentences}: GlitchTextProps) {
                 }
             }, 80); // Slightly faster for more robotic feel
 
-        }, 5000);
+        }, time);
 
         return () => clearInterval(interval);
     }, [currentIndex, Sentences]);

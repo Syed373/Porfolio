@@ -7,96 +7,135 @@ import Submit from '@/icons/Submit-icon'
 
 function Contact() {
     return (
-        <div className="max-w-3xl pb-20 mx-auto border-1 border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm bg-[#c2c2c220]">
-            <div className="w-3xl mt-20 flex justify-center text-center md:text-start">
-                <div className='w-2xl font-robo'>
-                    <Tabs defaultValue="Contact" className="w-3xl">
-                        <TabsList>
-                            <TabsTrigger value="Contact">Contact</TabsTrigger>
-                            <TabsTrigger value="Hire">Hire</TabsTrigger>
-                            <TabsTrigger value="Collaborate">Collaborate</TabsTrigger>
-                        </TabsList>
-                        <TabsContent value="Contact">
-                            <div className=''>
-                                <div className="mb-8 space-y-1">
-                                    <h1 className="text-3xl">Send a Message</h1>
+        <div className="w-full max-w-3xl pb-12 sm:pb-16 lg:pb-20 mx-auto border border-white/30 shadow-sm shadow-white/50 my-2 rounded-xl backdrop-blur-sm px-4 sm:px-6 lg:px-8">
+            <div className="w-full mt-12 sm:mt-16 lg:mt-20 flex flex-col justify-center items-center text-center text-white">
+                <div className="font-robo text-background">
+                    <h1 className="text-4xl text-foreground font-medium bg-background rounded-lg mx-4">Get in Touch</h1>
+                    <p className="text-background/50 px-10 my-8">Have a project idea, collaboration opportunity, or just want to chat about Fullstack and technology? I'm always open to connecting with fellow builders and creators.</p>
+                </div>
+                <div className="border mb-8 w-2xl rounded-sm  p-2 flex flex-col items-center">
+                    <h1 className="font-robo text-2xl w-fit font-bold">Connect with me</h1>
+                    <p className="text-background/50 px-10 my-2">Choose how you'd like to reach out</p>
+                    <div className="">
+
+
+
+
+
+                        {/* Continue from here */}
+
+
+
+
+
+                    </div>
+                </div>
+                <div className='w-full font-robo flex justify-center'>
+                    <Tabs defaultValue="Contact" className="w-full">
+                        <div className="flex justify-center mb-6">
+                            <TabsList className="w-full max-w-md">
+                                <TabsTrigger value="Contact" className="flex-1">Contact</TabsTrigger>
+                                <TabsTrigger value="Hire" className="flex-1">Hire</TabsTrigger>
+                                <TabsTrigger value="Collaborate" className="flex-1">Collaborate</TabsTrigger>
+                            </TabsList>
+                        </div>
+
+                        <TabsContent value="Contact" className="w-full max-w-2xl mx-auto">
+                            <div className='w-full'>
+                                <div className="mb-6 sm:mb-8 space-y-1">
+                                    <h1 className="text-2xl sm:text-3xl">Send a Message</h1>
                                     <p className="text-sm text-white/40">I'll get back to you as soon as possible</p>
                                 </div>
-                                <div className="space-y-10 md:flex gap-8">
-                                    <div>
-                                        <Label htmlFor="message">Name</Label>
-                                        <Input className='mt-4' placeholder="Your Name" type="Name" />
+                                <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:gap-8 mb-6">
+                                    <div className="w-full md:flex-1">
+                                        <Label className="block text-left">Name</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Your Name" type="text" />
                                     </div>
-                                    <div>
-                                        <Label htmlFor="message">Email</Label>
-                                        <Input className='mt-4' placeholder="Your Email" type="message" />
-                                    </div>
-                                </div>
-                                <div className="w-full mt-8 md:mt-0">
-                                    <div>
-                                        <Label htmlFor="message">Message</Label>
-                                        <Textarea className='mt-4 h-30' placeholder="Your Message..." id="contact-message" />
+                                    <div className="w-full md:flex-1">
+                                        <Label className="block text-left">Email</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Your Email" type="email" />
                                     </div>
                                 </div>
-                                <Button variant="secondary" className='mt-8'>Send Message&nbsp;<Submit /></Button>
+                                <div className="w-full">
+                                    <Label className="block text-left">Message</Label>
+                                    <Textarea className='mt-2 sm:mt-4 min-h-[120px] w-full resize-none' placeholder="Your Message..." id="contact-message" />
+                                </div>
+                                <div className="mt-6 sm:mt-8 flex justify-center">
+                                    <Button variant="secondary" className='inline-flex items-center gap-2'>
+                                        Send Message
+                                        <Submit />
+                                    </Button>
+                                </div>
                             </div>
                         </TabsContent>
-                        <TabsContent value="Hire">
-                            <div className=''>
-                                <div className="mb-8 space-y-1">
-                                    <h1 className="text-3xl">Work with Me</h1>
+
+                        <TabsContent value="Hire" className="w-full max-w-2xl mx-auto">
+                            <div className='w-full'>
+                                <div className="mb-6 sm:mb-8 space-y-1">
+                                    <h1 className="text-2xl sm:text-3xl">Work with Me</h1>
                                     <p className="text-sm text-white/40">Tell me about your project or position</p>
                                 </div>
-                                <div className="space-y-10 md:flex gap-8">
-                                    <div>
-                                        <Label htmlFor="message">Name</Label>
-                                        <Input className='mt-4' placeholder="Your Name" type="Name" />
+                                <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:gap-8 mb-6">
+                                    <div className="w-full md:flex-1">
+                                        <Label className="block text-left">Name</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Your Name" type="text" />
                                     </div>
-                                    <div>
-                                        <Label htmlFor="message">Email</Label>
-                                        <Input className='mt-4' placeholder="Your Email" type="message" />
-                                    </div>
-                                </div>
-                                <div className="space-y-6 w-full mt-8 md:mt-0">
-                                    <div>
-                                        <Label htmlFor="message">Company / Organization</Label>
-                                        <Textarea className='mt-4' placeholder="Company or Organization Name..." id="contact-message" />
-                                    </div>
-                                    <div>
-                                        <Label htmlFor="message">Message</Label>
-                                        <Textarea className='mt-4 h-30' placeholder="Tell me about your project or position..." id="contact-message" />
+                                    <div className="w-full md:flex-1">
+                                        <Label className="block text-left">Email</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Your Email" type="email" />
                                     </div>
                                 </div>
-                                <Button variant="secondary" className='mt-8'>Submit Inquiry&nbsp;<Submit /></Button>
+                                <div className="space-y-6 w-full">
+                                    <div>
+                                        <Label className="block text-left">Company / Organization</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Company or Organization Name..." />
+                                    </div>
+                                    <div>
+                                        <Label className="block text-left">Message</Label>
+                                        <Textarea className='mt-2 sm:mt-4 min-h-[120px] w-full resize-none' placeholder="Tell me about your project or position..." id="hire-message" />
+                                    </div>
+                                </div>
+                                <div className="mt-6 sm:mt-8 flex justify-center">
+                                    <Button variant="secondary" className='inline-flex items-center gap-2'>
+                                        Submit Inquiry
+                                        <Submit />
+                                    </Button>
+                                </div>
                             </div>
                         </TabsContent>
-                        <TabsContent value="Collaborate">
-                            <div className=''>
-                                <div className="mb-8 space-y-1">
-                                    <h1 className="text-3xl">Let's Build Together</h1>
+
+                        <TabsContent value="Collaborate" className="w-full max-w-2xl mx-auto">
+                            <div className='w-full'>
+                                <div className="mb-6 sm:mb-8 space-y-1">
+                                    <h1 className="text-2xl sm:text-3xl">Let's Build Together</h1>
                                     <p className="text-sm text-white/40">Share your idea and how we can collaborate</p>
                                 </div>
-                                <div className="space-y-10 md:flex gap-8">
-                                    <div>
-                                        <Label htmlFor="message">Name</Label>
-                                        <Input className='mt-4' placeholder="Your Name" type="Name" />
+                                <div className="space-y-6 md:space-y-0 md:flex md:gap-6 lg:gap-8 mb-6">
+                                    <div className="w-full md:flex-1">
+                                        <Label className="block text-left">Name</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Your Name" type="text" />
                                     </div>
-                                    <div>
-                                        <Label htmlFor="message">Email</Label>
-                                        <Input className='mt-4' placeholder="Your Email" type="message" />
-                                    </div>
-                                </div>
-                                <div className="space-y-6 w-full mt-8 md:mt-0">
-                                    <div>
-                                        <Label htmlFor="message">Project Name</Label>
-                                        <Textarea className='mt-4' placeholder="Name of your project" id="contact-message" />
-                                    </div>
-                                    <div>
-                                        <Label htmlFor="message">Message</Label>
-                                        <Textarea className='mt-4 h-30' placeholder="Share your collaboration idea..." id="contact-message" />
+                                    <div className="w-full md:flex-1">
+                                        <Label className="block text-left">Email</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Your Email" type="email" />
                                     </div>
                                 </div>
-                                <Button variant="secondary" className='mt-8'>Let's Collaborate&nbsp;<Submit /></Button>
+                                <div className="space-y-6 w-full">
+                                    <div>
+                                        <Label className="block text-left">Project Name</Label>
+                                        <Input className='mt-2 sm:mt-4 w-full' placeholder="Name of your project" />
+                                    </div>
+                                    <div>
+                                        <Label className="block text-left">Message</Label>
+                                        <Textarea className='mt-2 sm:mt-4 min-h-[120px] w-full resize-none' placeholder="Share your collaboration idea..." id="collaborate-message" />
+                                    </div>
+                                </div>
+                                <div className="mt-6 sm:mt-8 flex justify-center">
+                                    <Button variant="secondary" className='inline-flex items-center gap-2'>
+                                        Let's Collaborate
+                                        <Submit />
+                                    </Button>
+                                </div>
                             </div>
                         </TabsContent>
                     </Tabs>

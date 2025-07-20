@@ -16,21 +16,13 @@ interface HomeProps {
   profileImage?: string;
   name?: string;
   customSentences?: string[];
-  customDescription?:string[];
 }
 
 const Home: React.FC<HomeProps> = ({
   profileImage = '/SU.png',
   name = "Syed Umair",
   customSentences = ["Frontend", "Backend", "Fullstack"],
-  customDescription = [
-    "Hey there! I’m Umair, a Full Stack Developer who loves building fast, responsive frontends with React and robust backends with Node.js & PostgreSQL.",
-    "Full Stack Developer specializing in React, Node.js, and modern backend architectures. I build scalable, clean, and efficient web apps end-to-end.",
-    "Turning ideas into scalable products with React, Node, and TypeScript. Full Stack Developer. Problem Solver. Builder.",
-    "Building performant, scalable, and beautiful web apps with modern technologies. From design systems to backend APIs - I handle it all.",
-    "Coding pixels to perfection on the frontend, and engineering reliable APIs on the backend. I turn ideas into reality with React, Node, and TypeScript.",
-    "“Code. Build. Deploy.” - Full Stack Developer crafting interactive frontends with React and scalable backends with Node, Prisma, and PostgreSQL."
-  ]
+  
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
   const [imageLoaded, setImageLoaded] = useState<boolean>(false);
@@ -82,7 +74,7 @@ const Home: React.FC<HomeProps> = ({
   };
 
   return (
-    <div className="max-w-3xl pb-20 mx-auto font-robo border-1 border-white/30 shadow-sm shadow-white/50 h-fit mt-21 rounded-xl backdrop-blur-sm bg-[#c2c2c220]">
+    <div className="max-w-3xl pb-20 mx-auto font-robo border-1 border-white/30 shadow-sm shadow-white/50 h-fit mt-18 rounded-xl backdrop-blur-sm ">
       <main className="relative z-10 min-h-130 flex items-center mt-10 lg:mt-0 justify-center px-4 sm:px-6 lg:px-8">
         <div className={`
         max-w-2xl mx-auto w-full
@@ -90,36 +82,36 @@ const Home: React.FC<HomeProps> = ({
         ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
       `}>
 
-        {/* Social Links */}
-              <div className="flex justify-end items-center mb-10 w-full lg:mt-12">
-                <nav
-                  className="flex items-center space-x-4 lg:space-x-6"
-                  aria-label="Social media links"
-                >
-                  {socialLinks.map((link, index) => {
-                    const IconComponent = link.icon;
-                    return (
-                      <button
-                        key={link.name}
-                        onClick={() => handleSocialClick(link)}
-                        className={`
+          {/* Social Links */}
+          <div className="flex justify-end items-center mb-10 w-full lg:mt-12">
+            <nav
+              className="flex items-center space-x-4 lg:space-x-6"
+              aria-label="Social media links"
+            >
+              {socialLinks.map((link, index) => {
+                const IconComponent = link.icon;
+                return (
+                  <button
+                    key={link.name}
+                    onClick={() => handleSocialClick(link)}
+                    className={`
                     p-3 rounded-full transition-all duration-300 ease-out
                     hover:scale-110 hover:bg-white/10 hover:shadow-lg
                     focus:outline-none focus:ring-2 focus:ring-white/20
-                    transform hover:-translate-y-1
+                    transform hover:-translate-y-1 cursor-pointer
                     ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}
                   `}
-                        style={{
-                          transitionDelay: `${index * 0.1}s`
-                        }}
-                        aria-label={link.label}
-                      >
-                        <IconComponent className="w-6 h-6 lg:w-7 lg:h-7 text-gray-300 hover:text-white transition-colors duration-300" />
-                      </button>
-                    );
-                  })}
-                </nav>
-              </div>
+                    style={{
+                      transitionDelay: `${index * 0.1}s`
+                    }}
+                    aria-label={link.label}
+                  >
+                    <IconComponent className="w-6 h-6 lg:w-7 lg:h-7 text-gray-300 hover:text-white transition-colors duration-300" />
+                  </button>
+                );
+              })}
+            </nav>
+          </div>
 
           {/* Main Content */}
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16">
@@ -162,11 +154,11 @@ const Home: React.FC<HomeProps> = ({
                 <div className="absolute -inset-8 bg-gradient-to-r from-white via-[#c2c2c2] to-[#b1b1b1] rounded-full opacity-10 animate-pulse" style={{ animationDelay: '1s' }} />
               </div>
 
-              
+
             </div>
 
             {/* Text Content */}
-            
+
             <div className={`
             flex-1 text-center lg:text-left
             transform transition-all duration-1000 ease-out
@@ -174,8 +166,8 @@ const Home: React.FC<HomeProps> = ({
           `}>
               {/* Greeting */}
               <h1 className="font-robo text-[#d9d9d9] text-2xl lg:text-3xl xl:text-4xl font-light mb-6 lg:mb-8">
-                <span className="inline-block animate-fade-in-up">Hi, I'm</span>
-                <span className="block text-3xl lg:text-4xl xl:text-5xl font-bold bg-gradient-to-r from-primary-foreground to-chart-2 hover:bg-gradient-to-r hover:from-chart-2 hover:to-primary-foreground bg-clip-text text-transparent mt-2 py-1 transition-all duration-300 ">
+                <span className="inline-block animate-fade-in-up">Hi, I’m</span>
+                <span className="block text-5xl font-bold bg-gradient-to-r from-primary-foreground to-chart-2 hover:bg-gradient-to-r hover:from-chart-2 hover:to-primary-foreground bg-clip-text text-transparent mt-2 py-1 transition-all duration-300 ">
                   {name}
                 </span>
               </h1>
@@ -183,9 +175,10 @@ const Home: React.FC<HomeProps> = ({
               {/* Role with GlitchText */}
               <div className="text-lg lg:text-xl xl:text-2xl text-[#d9d9d9] font-robo">
                 <span className="inline-block">A</span>
-                <span className="mx-2 lg:mx-3 inline-block">
+                <span className="mx-2 text-3xl lg:mx-3 inline-block">
                   <GlitchText
                     Sentences={customSentences}
+                    time = {3000}
                   />
                 </span>
                 <span className="inline-block">Developer</span>
@@ -197,12 +190,12 @@ const Home: React.FC<HomeProps> = ({
               transform transition-all duration-1000 ease-out
               ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'}
             `} style={{ transitionDelay: '0.6s' }}>
-                <GlitchText  Sentences={customDescription}/>
+                Hey there! I’m Umair, a Full Stack Developer who loves building fast, responsive frontends with React and robust backends with Node.js & PostgreSQL.
               </p>
 
               {/* CTA Buttons */}
               <div className={`
-              mt-8 lg:mt-10 flex flex-col sm:flex-row gap-4 sm:gap-6
+              mt-8 lg:mt-10 flex flex-col sm:flex-row sm:justify-center gap-4 sm:gap-6
               transform transition-all duration-1000 ease-out
               ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}
             `} style={{ transitionDelay: '0.8s' }}>

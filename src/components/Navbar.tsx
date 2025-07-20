@@ -29,9 +29,9 @@ function Navbar() {
   }, [])
   
   return (
-    <div className={`fixed inset-0 z-20 transform transition-all duration-300 ease-in-out ${isScrolled ? 'max-w-sm rounded-full bg-black' : ' rounded-xl max-w-3xl bg-[#c2c2c220]'} flex justify-center items-center mx-auto border-1 border-white/30 shadow-sm shadow-white/50 h-fit my-2  backdrop-blur-2xl `}>
+    <div className={`fixed inset-0 z-20 transform transition-all duration-300 ease-in-out ${isScrolled ? 'max-w-sm rounded-full bg-black' : ' rounded-xl max-w-3xl'} flex justify-center items-center mx-auto border-1 border-white/30 shadow-sm shadow-white/50 max-h-14 my-2 backdrop-blur-2xl `}>
       <div className='w-full flex justify-center items-center'>
-        <ul className='h-12 mt-4 px-2 rounded-full w-fit list-none flex justify-center items-center gap-8 text-primary-foreground'>
+        <ul className='h-12 mt-1 rounded-full w-fit list-none flex justify-center items-center gap-8 text-primary-foreground'>
           <li className={Liststyle}><a className={LinkStyle} href="/"><Home /></a>Home</li>
           <li className={Liststyle}><a className={LinkStyle} href="/work"><Project /></a>Projects</li>
           <li className={Liststyle}><a className={LinkStyle} href="/contact"><Contact /></a>Connect</li>

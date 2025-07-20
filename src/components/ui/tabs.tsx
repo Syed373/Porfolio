@@ -24,7 +24,7 @@ function TabsList({
     <TabsPrimitive.List
       data-slot="tabs-list"
       className={cn(
-        "bg-foreground text-background inline-flex h-12 w-sm md:min-w-2xl items-center justify-center border-1 border-[#575757] rounded-lg p-[3px]",
+        "bg-foreground text-background inline-flex h-12 max-w-sm md:min-w-2xl items-center justify-center border-1 border-[#575757] rounded-lg p-[3px]",
         className
       )}
       {...props}
@@ -55,7 +55,7 @@ function TabsContent({
   return (
     <TabsPrimitive.Content
       data-slot="tabs-content"
-      className={cn("flex justify-center mt-8 w-1/2 md:min-w-2xl outline-none", className)}
+      className={cn("flex justify-e mt-8 md:min-w-2xl outline-none", className)}
       {...props}
     />
   )
