@@ -3,6 +3,7 @@ import Navbar from './Navbar'
 import Contact from './Contact'
 import About from './About'
 import Project from './Projects'
+import Footer from './Footer'
 
 function Main() {
     return (
@@ -12,6 +13,7 @@ function Main() {
             <About />
             <Project />
             <Contact />
+            <Footer />
         </>
     )
 }

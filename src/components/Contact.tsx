@@ -4,30 +4,84 @@ import { Input } from './ui/input'
 import { Textarea } from './ui/textarea'
 import { Button } from './ui/button'
 import Submit from '@/icons/Submit-icon'
+import EmailIcon from "@/icons/Email-icon"
+import Github from "@/icons/Github-icon"
+import X from "@/icons/X-icon"
+import LinkedIn from "@/icons/LinkedIn-icon"
+
+interface SocialLink {
+    name: string;
+    profile: string;
+    icon: React.ComponentType<any>;
+    href: string;
+    label: string;
+}
 
 function Contact() {
+
+    const socialLinks: SocialLink[] = [
+        {
+            name: 'Email',
+            profile: 'umair00703@gmail.com',
+            icon: EmailIcon,
+            href: 'https://mail.google.com/mail/u/0/#inbox?compose=new/',
+            label: 'Email'
+        },
+        {
+            name: 'github',
+            profile: 'github.com/syed373',
+            icon: Github,
+            href: 'https://github.com/syed373/',
+            label: 'GitHub Profile'
+        },
+        {
+            name: 'X',
+            profile: '@Syeed373',
+            icon: X,
+            href: 'https://x.com/syeed373/',
+            label: 'X (Twitter) Profile'
+        },
+        {
+            name: 'linkedIn',
+            profile: 'linkedin.com/in/syed373',
+            icon: LinkedIn,
+            href: 'https://linkedin.com/in/syed373/',
+            label: 'LinkedIn Profile'
+        }
+    ];
+
+    const handleSocialClick = (link: SocialLink): void => {
+        window.open(link.href, '_blank', 'noopener,noreferrer');
+    };
+
     return (
         <div className="w-full max-w-3xl pb-12 sm:pb-16 lg:pb-20 mx-auto border border-white/30 shadow-sm shadow-white/50 my-2 rounded-xl backdrop-blur-sm px-4 sm:px-6 lg:px-8">
             <div className="w-full mt-12 sm:mt-16 lg:mt-20 flex flex-col justify-center items-center text-center text-white">
                 <div className="font-robo text-background">
-                    <h1 className="text-4xl text-foreground font-medium bg-background rounded-lg mx-4">Get in Touch</h1>
+                    <h1 className="text-4xl text-foreground font-medium bg-background py-1 rounded-lg mx-4">Get in Touch</h1>
                     <p className="text-background/50 px-10 my-8">Have a project idea, collaboration opportunity, or just want to chat about Fullstack and technology? I'm always open to connecting with fellow builders and creators.</p>
                 </div>
-                <div className="border mb-8 w-2xl rounded-sm  p-2 flex flex-col items-center">
-                    <h1 className="font-robo text-2xl w-fit font-bold">Connect with me</h1>
+                <div className="border border-background/50 mt-8 mb-16 w-fit rounded-sm p-8 flex flex-col items-center">
+                    <h1 className="font-robo text-3xl w-fit font-bold">Connect with me</h1>
                     <p className="text-background/50 px-10 my-2">Choose how you'd like to reach out</p>
-                    <div className="">
-
-
-
-
-
-                        {/* Continue from here */}
-
-
-
-
-
+                    <div className="text-white space-y-4 my-6">
+                        {socialLinks.map((link) => {
+                            const IconComponent = link.icon;
+                            return (
+                                <button
+                                    key={link.name}
+                                    onClick={() => handleSocialClick(link)}
+                                    className="flex items-center gap-4 font-robo hover:bg-white/10 w-70 p-2 rounded-md"
+                                    aria-label={link.label}
+                                >
+                                    <IconComponent className="size-12 bg-popover rounded-full p2" />
+                                    <div>
+                                        <h1 className="text-start">{link.name}</h1>
+                                        <p className="text-sm text-background/50">{link.profile}</p>
+                                    </div>
+                                </button>
+                            );
+                        })}
                     </div>
                 </div>
                 <div className='w-full font-robo flex justify-center'>

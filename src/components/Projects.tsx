@@ -18,7 +18,7 @@ function Projects() {
                             <button className='text-sm bg-background text-foreground rounded-full px-2 font-bold'>Tech</button>
                         </div>
                         <div className='px-2 space-x-4'>
-                            <Button variant="link" className='rounded-full '><Github />Repo</Button>
+                            <Button variant="link" className='rounded-full '><Github className='size-4'/>Repo</Button>
                             <Button variant="link" className='rounded-full text-center'><LinkIcon />Live</Button>
                         </div>
                     </div>
@@ -32,7 +32,7 @@ function Projects() {
                             <button className='text-sm bg-background text-foreground rounded-full px-2 font-bold'>Tech</button>
                         </div>
                         <div className='px-2 space-x-4'>
-                            <Button variant="link" className='rounded-full '><Github />Repo</Button>
+                            <Button variant="link" className='rounded-full '><Github className='size-4'/>Repo</Button>
                             <Button variant="link" className='rounded-full text-center'><LinkIcon />Live</Button>
                         </div>
                     </div>
@@ -46,7 +46,7 @@ function Projects() {
                             <button className='text-sm bg-background text-foreground rounded-full px-2 font-bold'>Tech</button>
                         </div>
                         <div className='px-2 space-x-4'>
-                            <Button variant="link" className='rounded-full '><Github />Repo</Button>
+                            <Button variant="link" className='rounded-full '><Github className='size-4'/>Repo</Button>
                             <Button variant="link" className='rounded-full text-center'><LinkIcon />Live</Button>
                         </div>
                     </div>
