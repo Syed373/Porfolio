@@ -3,6 +3,7 @@ import Github from '../icons/Github-icon';
 import LinkedIn from '../icons/LinkedIn-icon';
 import X from '../icons/X-icon';
 import GlitchText from './ui/GlitchText';
+import { Link, Element } from 'react-scroll';
 
 // Types
 interface SocialLink {
@@ -74,7 +75,7 @@ const Home: React.FC<HomeProps> = ({
   };
 
   return (
-    <div className="max-w-3xl pb-20 mx-auto font-robo border-1 border-white/30 shadow-sm shadow-white/50 h-fit mt-18 rounded-xl backdrop-blur-sm ">
+    <Element name="Home" className="max-w-3xl pb-20 mx-auto font-robo border-1 border-white/30 shadow-sm shadow-white/50 h-fit mt-18 rounded-xl backdrop-blur-sm ">
       <main className="relative z-10 min-h-130 flex items-center mt-10 lg:mt-0 justify-center px-4 sm:px-6 lg:px-8">
         <div className={`
         max-w-2xl mx-auto w-full
@@ -199,18 +200,18 @@ const Home: React.FC<HomeProps> = ({
               transform transition-all duration-1000 ease-out
               ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}
             `} style={{ transitionDelay: '0.8s' }}>
-                <button className="px-8 py-3 text-foreground hover:text-background hover:bg-foreground bg-background rounded-full font-semibold hover:shadow-lg hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-indigo-500/50">
+                <Link to="Projects" smooth={true} duration={500} className="text-center px-8 py-3 text-foreground hover:text-background hover:bg-foreground bg-background rounded-full font-semibold hover:shadow-lg hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2">
                   View My Work
-                </button>
-                <button className="px-8 py-3 border-2 text-background hover:text-foreground border-background rounded-full font-semibold hover:bg-background transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-background">
+                </Link>
+                <Link to="Contact" smooth={true} duration={500} className="text-center px-8 py-3 border-2 text-background hover:text-foreground border-background rounded-full font-semibold hover:bg-background transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-background">
                   Get In Touch
-                </button>
+                </Link>
               </div>
             </div>
           </div>
         </div>
       </main>
-    </div>
+    </Element>
   );
 };
 
