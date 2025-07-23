@@ -1,4 +1,4 @@
-import {useEffect, useState} from 'react'
+import { useEffect, useState } from 'react'
 import Home from '../icons/Home-icon'
 import Project from '../icons/Projects-icon'
 import { Link } from 'react-scroll';
@@ -11,7 +11,7 @@ const Liststyle = 'flex flex-col justify-center items-center transition-all dura
 
 function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false)
-  
+
   useEffect(() => {
     const handleScroll = () => {
       const scrollHeight = window.scrollY
@@ -23,13 +23,12 @@ function Navbar() {
     }
 
     window.addEventListener('scroll', handleScroll)
-    
-    // Cleanup function to remove event listener
+
     return () => {
       window.removeEventListener('scroll', handleScroll)
     }
   }, [])
-  
+
   return (
     <div className={`fixed inset-0 z-20 transform transition-all duration-300 ease-in-out ${isScrolled ? 'max-w-sm rounded-full bg-black' : ' rounded-xl max-w-3xl'} flex justify-center items-center mx-auto border-1 border-white/30 shadow-sm shadow-white/50 max-h-14 my-2 backdrop-blur-2xl `}>
       <div className='w-full flex justify-center items-center'>

@@ -119,7 +119,7 @@ function Contact() {
                 form.reset();
             }
         } catch (error) {
-            
+
             Swal.fire({
                 title: 'Error!',
                 text: `${error}`,
@@ -134,28 +134,25 @@ function Contact() {
 
     return (
         <Element name="Contact" className="w-full max-w-3xl pb-12 sm:pb-16 lg:pb-20 mx-auto border border-white/30 shadow-sm shadow-white/50 my-2 rounded-xl backdrop-blur-sm px-4 sm:px-6 lg:px-8">
-            <div 
+            <div
                 ref={contactRef}
-                className={`w-full mt-12 sm:mt-16 lg:mt-20 flex flex-col justify-center items-center text-center text-white transform transition-all duration-1000 ease-out ${
-                    isVisible 
-                        ? 'opacity-100 translate-y-0' 
+                className={`w-full mt-12 sm:mt-16 lg:mt-20 flex flex-col justify-center items-center text-center text-white transform transition-all duration-1000 ease-out ${isVisible
+                        ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
-                }`}
+                    }`}
             >
-                <div className={`font-robo text-background transform transition-all duration-1000 ease-out delay-200 ${
-                    isVisible 
-                        ? 'opacity-100 translate-y-0' 
+                <div className={`font-robo text-background transform transition-all duration-1000 ease-out delay-200 ${isVisible
+                        ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
-                }`}>
+                    }`}>
                     <h1 className="text-4xl text-foreground font-medium bg-background py-1 rounded-lg mx-4">Get in Touch</h1>
                     <p className="text-background/50 px-10 my-8">Have a project idea, collaboration opportunity, or just want to chat about Fullstack and technology? I'm always open to connecting with fellow builders and creators.</p>
                 </div>
-                
-                <div className={`border border-background/50 mt-8 mb-16 w-fit rounded-sm p-8 flex flex-col items-center transform transition-all duration-1000 ease-out delay-400 ${
-                    isVisible 
-                        ? 'opacity-100 translate-y-0' 
+
+                <div className={`border border-background/50 mt-8 mb-16 w-fit rounded-sm p-8 flex flex-col items-center transform transition-all duration-1000 ease-out delay-400 ${isVisible
+                        ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
-                }`}>
+                    }`}>
                     <h1 className="font-robo text-3xl w-fit font-bold">Connect with me</h1>
                     <p className="text-background/50 px-10 my-2">Choose how you'd like to reach out</p>
                     <div className="text-white space-y-4 my-6">
@@ -165,13 +162,12 @@ function Contact() {
                                 <button
                                     key={link.name}
                                     onClick={() => handleSocialClick(link)}
-                                    className={`flex items-center gap-4 font-robo hover:bg-white/10 w-70 p-2 rounded-md transform transition-all duration-700 ease-out ${
-                                        isVisible 
-                                            ? 'opacity-100 translate-x-0' 
+                                    className={`flex items-center gap-4 font-robo hover:bg-white/10 w-70 p-2 rounded-md transform transition-all duration-700 ease-out ${isVisible
+                                            ? 'opacity-100 translate-x-0'
                                             : 'opacity-0 -translate-x-8'
-                                    }`}
-                                    style={{ 
-                                        transitionDelay: isVisible ? `${600 + index * 100}ms` : '0ms' 
+                                        }`}
+                                    style={{
+                                        transitionDelay: isVisible ? `${600 + index * 100}ms` : '0ms'
                                     }}
                                     aria-label={link.label}
                                 >
@@ -185,12 +181,11 @@ function Contact() {
                         })}
                     </div>
                 </div>
-                
-                <div className={`w-full font-robo flex justify-center transform transition-all duration-1000 ease-out delay-1000 ${
-                    isVisible 
-                        ? 'opacity-100 translate-y-0' 
+
+                <div className={`w-full font-robo flex justify-center transform transition-all duration-1000 ease-out delay-1000 ${isVisible
+                        ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
-                }`}>
+                    }`}>
                     <Tabs defaultValue="Contact" className="w-full">
                         <div className="flex justify-center mb-6">
                             <TabsList className="w-full max-w-md">
