@@ -5,7 +5,6 @@ import X from '../icons/X-icon';
 import GlitchText from './ui/GlitchText';
 import { Link, Element } from 'react-scroll';
 
-// Types
 interface SocialLink {
   name: string;
   icon: React.ComponentType<any>;
@@ -20,15 +19,13 @@ interface HomeProps {
 }
 
 const Home: React.FC<HomeProps> = ({
-  profileImage = '/SU.png',
+  profileImage = '/Profile_img.png',
   name = "Syed Umair",
   customSentences = ["Frontend", "Backend", "Fullstack"],
-  
+
 }) => {
   const [isVisible, setIsVisible] = useState<boolean>(false);
-  const [imageLoaded, setImageLoaded] = useState<boolean>(false);
 
-  // Social links configuration
   const socialLinks: SocialLink[] = [
     {
       name: 'github',
@@ -39,18 +36,17 @@ const Home: React.FC<HomeProps> = ({
     {
       name: 'x',
       icon: X,
-      href: 'https://x.com/syed373',
+      href: 'https://x.com/syeed373',
       label: 'X (Twitter) Profile'
     },
     {
       name: 'linkedin',
       icon: LinkedIn,
-      href: 'https://linkedin.com/in/syeedumair',
+      href: 'https://linkedin.com/in/syed373',
       label: 'LinkedIn Profile'
     }
   ];
 
-  // Animation on component mount
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsVisible(true);
@@ -59,17 +55,6 @@ const Home: React.FC<HomeProps> = ({
     return () => clearTimeout(timer);
   }, []);
 
-  // Handle image load
-  const handleImageLoad = (): void => {
-    setImageLoaded(true);
-  };
-
-  // Handle image error
-  const handleImageError = (): void => {
-    console.warn('Profile image failed to load');
-  };
-
-  // Handle social link clicks
   const handleSocialClick = (link: SocialLink): void => {
     window.open(link.href, '_blank', 'noopener,noreferrer');
   };
@@ -83,7 +68,6 @@ const Home: React.FC<HomeProps> = ({
         ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-10 opacity-0'}
       `}>
 
-          {/* Social Links */}
           <div className="flex justify-end items-center mb-10 w-full lg:mt-12">
             <nav
               className="flex items-center space-x-4 lg:space-x-6"
@@ -114,58 +98,21 @@ const Home: React.FC<HomeProps> = ({
             </nav>
           </div>
 
-          {/* Main Content */}
           <div className="flex flex-col lg:flex-row items-center lg:items-start gap-8 lg:gap-16">
-            {/* Profile Image */}
             <div className={`
             relative flex-shrink-0 mb-4
             transform transition-all duration-1000 ease-out
             ${isVisible ? 'translate-x-0 opacity-100' : '-translate-x-10 opacity-0'}
           `}>
-              <div className="relative">
-                {/* Image container with loading state */}
-                <div className={`
-                w-48 h-48 lg:w-56 lg:h-56 rounded-full overflow-hidden
-                bg-gradient-to-br from-white via-[#c2c2c2] to-[#b1b1b1]
-                p-1 shadow-2xl shadow-indigo-500/25
-                transform transition-all duration-500
-                ${imageLoaded ? 'scale-100' : 'scale-95'}
-              `}>
-                  <div className="w-full h-full bg-gray-800 rounded-full overflow-hidden">
-                    <img
-                      src={profileImage}
-                      alt={`${name}'s profile picture`}
-                      className={`
-                      w-full h-full object-cover
-                      transition-all duration-500
-                      ${imageLoaded ? 'opacity-100 scale-100' : 'opacity-0 scale-105'}
-                    `}
-                      onLoad={handleImageLoad}
-                      onError={handleImageError}
-                    />
-                    {/* Loading skeleton */}
-                    {!imageLoaded && (
-                      <div className="absolute inset-0 bg-gray-700 animate-pulse rounded-full" />
-                    )}
-                  </div>
-                </div>
-
-                {/* Decorative elements */}
-                <div className="absolute -inset-4 bg-gradient-to-r from-white via-[#c2c2c2] to-[#b1b1b1] rounded-full opacity-20 animate-pulse" />
-                <div className="absolute -inset-8 bg-gradient-to-r from-white via-[#c2c2c2] to-[#b1b1b1] rounded-full opacity-10 animate-pulse" style={{ animationDelay: '1s' }} />
-              </div>
-
-
+              <img src={profileImage} alt={`${name}'s profile picture`} className="h-50 w-50 rounded-full" />
             </div>
-
-            {/* Text Content */}
 
             <div className={`
             flex-1 text-center lg:text-left
             transform transition-all duration-1000 ease-out
             ${isVisible ? 'translate-x-0 opacity-100' : 'translate-x-10 opacity-0'}
           `}>
-              {/* Greeting */}
+
               <h1 className="font-robo text-[#d9d9d9] text-2xl lg:text-3xl xl:text-4xl font-light mb-6 lg:mb-8">
                 <span className="inline-block animate-fade-in-up">Hi, I’m</span>
                 <span className="block text-5xl font-bold bg-gradient-to-r from-primary-foreground to-chart-2 hover:bg-gradient-to-r hover:from-chart-2 hover:to-primary-foreground bg-clip-text text-transparent mt-2 py-1 transition-all duration-300 ">
@@ -173,19 +120,17 @@ const Home: React.FC<HomeProps> = ({
                 </span>
               </h1>
 
-              {/* Role with GlitchText */}
               <div className="text-lg lg:text-xl xl:text-2xl text-[#d9d9d9] font-robo">
                 <span className="inline-block">A</span>
                 <span className="mx-2 text-3xl lg:mx-3 inline-block">
                   <GlitchText
                     Sentences={customSentences}
-                    time = {3000}
+                    time={3000}
                   />
                 </span>
                 <span className="inline-block">Developer</span>
               </div>
 
-              {/* Subtitle/Description */}
               <p className={`
               mt-6 h-32 lg:mt-8 text-gray-400 text-base lg:text-lg max-w-2xl
               transform transition-all duration-1000 ease-out
@@ -194,16 +139,15 @@ const Home: React.FC<HomeProps> = ({
                 Hey there! I’m Umair, a Full Stack Developer who loves building fast, responsive frontends with React and robust backends with Node.js & PostgreSQL.
               </p>
 
-              {/* CTA Buttons */}
               <div className={`
               mt-8 lg:mt-10 flex flex-col sm:flex-row sm:justify-center gap-4 sm:gap-6
               transform transition-all duration-1000 ease-out
               ${isVisible ? 'translate-y-0 opacity-100' : 'translate-y-6 opacity-0'}
             `} style={{ transitionDelay: '0.8s' }}>
-                <Link to="Projects" smooth={true} duration={500} className="text-center px-8 py-3 text-foreground hover:text-background hover:bg-foreground bg-background rounded-full font-semibold hover:shadow-lg hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2">
+                <Link to="Projects" smooth={true} duration={500} className="text-center px-8 py-3 text-foreground hover:text-background hover:bg-foreground bg-background rounded-full font-semibold hover:shadow-lg hover:shadow-foreground/10 transition-all duration-300 hover:-translate-y-1  hover:border-2 hover:border-background">
                   View My Work
                 </Link>
-                <Link to="Contact" smooth={true} duration={500} className="text-center px-8 py-3 border-2 text-background hover:text-foreground border-background rounded-full font-semibold hover:bg-background transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-background">
+                <Link to="Contact" smooth={true} duration={500} className="text-center px-8 py-3 text-background hover:text-foreground border-2 border-background rounded-full font-semibold hover:bg-background transition-all duration-300 hover:-translate-y-1 focus:outline-none focus:ring-2 focus:ring-background">
                   Get In Touch
                 </Link>
               </div>

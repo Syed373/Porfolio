@@ -1,16 +1,45 @@
-import { Code, Database, Globe, Palette, Server, Zap } from 'lucide-react';
 import GlitchText from './ui/GlitchText';
 import { Element } from 'react-scroll';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { useEffect, useRef, useState } from 'react';
 
 interface SkillsType {
     name: string;
-    icon: string;            //React.ComponentType<any> |
+    icon: string;
     category: string;
+    Level: string;
     color: string;
     bgColor: string;
 }
 
 function About() {
+    const [isVisible, setIsVisible] = useState(false);
+    const aboutRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.1, // Trigger when 10% of the element is visible
+                rootMargin: '-50px 0px', // Start animation slightly before the element is fully in view
+            }
+        );
+
+        if (aboutRef.current) {
+            observer.observe(aboutRef.current);
+        }
+
+        return () => {
+            if (aboutRef.current) {
+                observer.unobserve(aboutRef.current);
+            }
+        };
+    }, []);
+
     const customAbout = [
         "Hey there! I'm Umair, a Full Stack Developer who loves building fast, responsive frontends with React and robust backends with Node.js & PostgreSQL.",
         "Full Stack Developer specializing in React, Node.js, and modern backend architectures. I build scalable, clean, and efficient web apps end-to-end.",
@@ -20,202 +49,268 @@ function About() {
         '"Code. Build. Deploy." - Full Stack Developer crafting interactive frontends with React and scalable backends with Node, Prisma, and PostgreSQL.'
     ];
 
-    // Skills configuration - easily extensible
     const skillsConfig: SkillsType[] = [
         {
             name: "HTML5",
-            icon: "🌐",
-            category: "frontend",
-            color: "text-orange-500",
-            bgColor: "bg-orange-500/10 hover:bg-orange-500/20"
+            icon: '/Html.svg',
+            category: "Frontend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "CSS3",
-            icon: "🎨",
-            category: "frontend",
-            color: "text-blue-500",
-            bgColor: "bg-blue-500/10 hover:bg-blue-500/20"
+            icon: "/Css.svg",
+            category: "Frontend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "JavaScript",
-            icon: "⚡",
-            category: "frontend",
-            color: "text-yellow-500",
-            bgColor: "bg-yellow-500/10 hover:bg-yellow-500/20"
+            icon: "/JS.svg",
+            category: "Frontend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "TypeScript",
-            icon: "📘",
-            category: "frontend",
-            color: "text-blue-600",
-            bgColor: "bg-blue-600/10 hover:bg-blue-600/20"
+            icon: "/TS.svg",
+            category: "Frontend",
+            Level: "proficient",
+            color: "text-chart-1",
+            bgColor: "hover:bg-chart-1/20"
         },
         {
             name: "React",
-            icon: "⚛️",
-            category: "frontend",
-            color: "text-cyan-500",
-            bgColor: "bg-cyan-500/10 hover:bg-cyan-500/20"
+            icon: "/React.svg",
+            category: "Frontend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "Node.js",
-            icon: "🟢",
-            category: "backend",
+            icon: "/Node.svg",
+            category: "Backend",
+            Level: "Expert",
             color: "text-green-500",
-            bgColor: "bg-green-500/10 hover:bg-green-500/20"
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "Express.js",
-            icon: "🚀",
-            category: "backend",
-            color: "text-gray-400",
-            bgColor: "bg-gray-400/10 hover:bg-gray-400/20"
+            icon: "/Express.svg",
+            category: "Backend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "MongoDB",
-            icon: "🍃",
-            category: "database",
-            color: "text-green-600",
-            bgColor: "bg-green-600/10 hover:bg-green-600/20"
+            icon: "/Mongo.svg",
+            category: "Database",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "Tailwind CSS",
-            icon: "🎯",
-            category: "styling",
-            color: "text-teal-500",
-            bgColor: "bg-teal-500/10 hover:bg-teal-500/20"
+            icon: "/Tailwind.svg",
+            category: "Frontend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
         },
         {
             name: "Bootstrap",
-            icon: "🟣",
-            category: "styling",
-            color: "text-purple-500",
-            bgColor: "bg-purple-500/10 hover:bg-purple-500/20"
-        }
+            icon: "/Bootstrap.svg",
+            category: "Frontend",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
+        },
+        {
+            name: "Git",
+            icon: "/Git.svg",
+            category: "Tools",
+            Level: "Proficient",
+            color: "text-chart-1",
+            bgColor: "hover:bg-chart-1/20"
+        },
+        {
+            name: "Github",
+            icon: "/Github.svg",
+            category: "Tools",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
+        },
+        {
+            name: "ShadCN UI",
+            icon: "/ShadCN.svg",
+            category: "Frontend",
+            Level: "Proficient",
+            color: "text-chart-1",
+            bgColor: "hover:bg-chart-1/20"
+        },
+        {
+            name: "Figma",
+            icon: "/Figma.svg",
+            category: "Tools",
+            Level: "Proficient",
+            color: "text-chart-1",
+            bgColor: "hover:bg-chart-1/20"
+        },
+        {
+            name: "Gemini API",
+            icon: "/GeminiAPI.svg",
+            category: "Tools",
+            Level: "Proficient",
+            color: "text-chart-1",
+            bgColor: "hover:bg-chart-1/20"
+        },
+        {
+            name: "Trpc",
+            icon: "/Trpc.svg",
+            category: "Backend",
+            Level: "Familier",
+            color: "text-chart-5",
+            bgColor: "hover:bg-chart-4/20"
+        },
+        {
+            name: "PostgresSQL",
+            icon: "/Postgress.svg",
+            category: "Database",
+            Level: "Familier",
+            color: "text-chart-5",
+            bgColor: "hover:bg-chart-4/20"
+        },
+        {
+            name: "Postman",
+            icon: "/Postman.svg",
+            category: "Tools",
+            Level: "Expert",
+            color: "text-green-500",
+            bgColor: "hover:bg-green-500/20"
+        },
+        {
+            name: "WebSockets",
+            icon: "/websocket.svg",
+            category: "Backend",
+            Level: "Familier",
+            color: "text-chart-5",
+            bgColor: "hover:bg-chart-4/20"
+        },
     ];
 
-    // Group skills by category for organized display
-    // const groupedSkills = skillsConfig.reduce((acc, skill) => {
-    //     if (!acc[skill.category]) {
-    //         acc[skill.category] = [];
-    //     }
-    //     acc[skill.category].push(skill);
-    //     return acc;
-    // }, {});
-
-    // const categoryLabels = {
-    //     frontend: "Frontend",
-    //     backend: "Backend",
-    //     database: "Database",
-    //     styling: "Styling"
-    // };
+    const categoryLabels: string = "Frontend,Backend,Database,Tools"
 
     return (
-        <Element name="About" className="max-w-3xl py-6 px-4 mx-auto border font-robo text-background border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm bg-[#c2c2c20e]">
+        <div ref={aboutRef}>
+            <Element 
+                name="About" 
+                className={`max-w-3xl py-6 px-4 mx-auto border font-robo text-background border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm transform transition-all duration-1000 ease-out ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0 scale-100' 
+                        : 'opacity-0 translate-y-12 scale-95'
+                }`}
+            >
             <div className='p-2 flex flex-col items-center'>
-                {/* About Me Section */}
-                <h1 className="text-4xl text-foreground w-full font-medium bg-background py-2 rounded-lg mx-8 text-center mb-8">
+
+                <h1 className={`text-4xl text-foreground w-full font-bold bg-background py-2 rounded-lg mx-8 text-center mb-8 transform transition-all duration-1000 ease-out delay-200 ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}>
                     About Me
                 </h1>
-                
-                <div className='text-center text-lg max-w-xl pt-4 min-h-40'>
+
+                <img 
+                    src="/Profile_img.png" 
+                    alt="Profile image" 
+                    className={`h-50 my-8 rounded-lg transform transition-all duration-1000 ease-out delay-400 ${
+                        isVisible 
+                            ? 'opacity-100 translate-y-0 scale-100' 
+                            : 'opacity-0 translate-y-8 scale-90'
+                    }`}
+                />
+
+                <div className={`text-center text-2xl max-w-xl pt-4 min-h-40 transform transition-all duration-1000 ease-out delay-600 ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}>
                     <GlitchText
                         Sentences={customAbout}
                         time={5000}
                     />
                 </div>
 
-                {/* Skills Section */}
-                <div className="mt-8">
-                    <h2 className="text-3xl text-foreground font-medium text-center mb-8 bg-background/50 py-2 rounded-lg backdrop-blur-sm">
+                <div className={`my-12 w-full transform transition-all duration-1000 ease-out delay-800 ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}>
+                    <h2 className="text-3xl text-foreground font-medium text-center mb-8 bg-background w-full p-2 rounded-lg">
                         Tech Stack
                     </h2>
-                    
-                    {/* Skills Grid - Organized by Category */}
-                    {/* <div className="space-y-8">
-                        {Object.entries(groupedSkills).map(([category, skills]) => (
-                            <div key={category} className="space-y-4">
-                                <h3 className="text-xl font-medium text-foreground/80 text-center capitalize">
-                                    {categoryLabels[category]}
-                                </h3>
-                                <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-4">
-                                    {skills.map((skill) => (
-                                        <div
-                                            key={skill.name}
-                                            className={`
-                                                ${skill.bgColor} 
-                                                border border-white/20 
-                                                rounded-lg p-4 
-                                                text-center 
-                                                transition-all duration-300 
-                                                hover:scale-105 
-                                                hover:shadow-lg 
-                                                hover:shadow-white/20
-                                                cursor-pointer
-                                                group
-                                            `}
-                                        >
-                                            <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                                                {skill.icon}
-                                            </div>
-                                            <div className={`${skill.color} font-medium text-sm group-hover:text-white transition-colors duration-300`}>
-                                                {skill.name}
-                                            </div>
+                    <div className='w-full font-robo flex justify-center'>
+                        <Tabs defaultValue="Frontend" className="w-full">
+                            <div className="flex justify-center mb-6">
+                                <TabsList className="w-full max-w-2xl">
+                                    {categoryLabels.split(",").map((item, index) => {
+                                        return (
+                                            <TabsTrigger key={index} value={item.trim()} className="flex-1">
+                                                {item.trim()}
+                                            </TabsTrigger>
+                                        )
+                                    })}
+                                </TabsList>
+                            </div>
+
+                            {categoryLabels.split(",").map((item, index) => {
+                                const category = item.trim();
+                                return (
+                                    <TabsContent key={index} value={category} className="w-full max-w-2xl mx-auto">
+                                        <div className='grid grid-cols-2 sm:grid-cols-3 gap-4 px-4'>
+                                            {skillsConfig.filter(skill => skill.category === category).map((skill, skillIndex) => {
+                                                return (
+                                                    <div
+                                                        key={skillIndex}
+                                                        className={`flex flex-row items-center px-8 py-4 rounded-lg transition-all duration-300 cursor-default ${skill.bgColor} border border-white/10 hover:border-white/20 hover:scale-105 transform ${
+                                                            isVisible 
+                                                                ? 'opacity-100 translate-y-0' 
+                                                                : 'opacity-0 translate-y-4'
+                                                        }`}
+                                                        style={{
+                                                            transitionDelay: isVisible ? `${1000 + skillIndex * 100}ms` : '0ms'
+                                                        }}
+                                                    >
+                                                        <div className="text-2xl mb-2">
+                                                            <img src={skill.icon} alt="Skill-Icon" className='h-10 w-10 bg-background rounded p-1' />
+                                                        </div>
+                                                        <div className='flex flex-col justify-center ml-4'>
+                                                            <div className={`text-sm font-medium`}>
+                                                                {skill.name}
+                                                            </div>
+                                                            <div className={`mt-2 text-xs text ${skill.color}`}>
+                                                                {skill.Level}
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                )
+                                            })}
                                         </div>
-                                    ))}
-                                </div>
-                            </div>
-                        ))}
-                    </div> */}
-
-                    {/* Alternative: All Skills in One Grid (uncomment if preferred) */}
-                    
-                    <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-5 gap-4 mt-8">
-                        {skillsConfig.map((skill) => (
-                            <div
-                                key={skill.name}
-                                className={`
-                                    ${skill.bgColor} 
-                                    border border-white/20 
-                                    rounded-lg p-4 
-                                    text-center 
-                                    transition-all duration-300 
-                                    hover:scale-105 
-                                    hover:shadow-lg 
-                                    hover:shadow-white/20
-                                    cursor-pointer
-                                    group
-                                `}
-                            >
-                                <div className="text-3xl mb-2 group-hover:scale-110 transition-transform duration-300">
-                                    {skill.icon}
-                                </div>
-                                <div className={`${skill.color} font-medium text-sm group-hover:text-white transition-colors duration-300`}>
-                                    {skill.name}
-                                </div>
-                            </div>
-                        ))}
-                    </div>
-                   
-                </div>
-
-                {/* Quick Stats or Additional Info */}
-                <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6">
-                    <div className="text-center p-4 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-2xl font-bold text-foreground">Full Stack</div>
-                        <div className="text-sm text-foreground/70">End-to-End Development</div>
-                    </div>
-                    <div className="text-center p-4 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-2xl font-bold text-foreground">Modern Tech</div>
-                        <div className="text-sm text-foreground/70">Latest Technologies</div>
-                    </div>
-                    <div className="text-center p-4 bg-white/5 rounded-lg border border-white/10">
-                        <div className="text-2xl font-bold text-foreground">Scalable</div>
-                        <div className="text-sm text-foreground/70">Production Ready</div>
+                                    </TabsContent>
+                                )
+                            })}
+                        </Tabs>
                     </div>
                 </div>
             </div>
-        </Element>
+            </Element>
+        </div>
     )
 }
 

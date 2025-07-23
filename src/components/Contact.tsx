@@ -8,7 +8,7 @@ import EmailIcon from "@/icons/Email-icon"
 import Github from "@/icons/Github-icon"
 import X from "@/icons/X-icon"
 import LinkedIn from "@/icons/LinkedIn-icon"
-import { useState } from "react"
+import { useState, useEffect, useRef } from "react"
 import Swal from 'sweetalert2'
 import { Element } from 'react-scroll';
 
@@ -22,11 +22,37 @@ interface SocialLink {
 
 function Contact() {
     const [isSubmitting, setIsSubmitting] = useState(false);
+    const [isVisible, setIsVisible] = useState(false);
+    const contactRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const observer = new IntersectionObserver(
+            ([entry]) => {
+                if (entry.isIntersecting) {
+                    setIsVisible(true);
+                }
+            },
+            {
+                threshold: 0.1,
+                rootMargin: '0px 0px -100px 0px'
+            }
+        );
+
+        if (contactRef.current) {
+            observer.observe(contactRef.current);
+        }
+
+        return () => {
+            if (contactRef.current) {
+                observer.unobserve(contactRef.current);
+            }
+        };
+    }, []);
 
     const socialLinks: SocialLink[] = [
         {
             name: 'Email',
-            profile: 'umair00703@gmail.com',
+            profile: 'umair030703@gmail.com',
             icon: EmailIcon,
             href: 'https://mail.google.com/mail/u/0/#inbox?compose=new/',
             label: 'Email'
@@ -108,25 +134,48 @@ function Contact() {
 
     return (
         <Element name="Contact" className="w-full max-w-3xl pb-12 sm:pb-16 lg:pb-20 mx-auto border border-white/30 shadow-sm shadow-white/50 my-2 rounded-xl backdrop-blur-sm px-4 sm:px-6 lg:px-8">
-            <div className="w-full mt-12 sm:mt-16 lg:mt-20 flex flex-col justify-center items-center text-center text-white">
-                <div className="font-robo text-background">
+            <div 
+                ref={contactRef}
+                className={`w-full mt-12 sm:mt-16 lg:mt-20 flex flex-col justify-center items-center text-center text-white transform transition-all duration-1000 ease-out ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}
+            >
+                <div className={`font-robo text-background transform transition-all duration-1000 ease-out delay-200 ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}>
                     <h1 className="text-4xl text-foreground font-medium bg-background py-1 rounded-lg mx-4">Get in Touch</h1>
                     <p className="text-background/50 px-10 my-8">Have a project idea, collaboration opportunity, or just want to chat about Fullstack and technology? I'm always open to connecting with fellow builders and creators.</p>
                 </div>
-                <div className="border border-background/50 mt-8 mb-16 w-fit rounded-sm p-8 flex flex-col items-center">
+                
+                <div className={`border border-background/50 mt-8 mb-16 w-fit rounded-sm p-8 flex flex-col items-center transform transition-all duration-1000 ease-out delay-400 ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}>
                     <h1 className="font-robo text-3xl w-fit font-bold">Connect with me</h1>
                     <p className="text-background/50 px-10 my-2">Choose how you'd like to reach out</p>
                     <div className="text-white space-y-4 my-6">
-                        {socialLinks.map((link) => {
+                        {socialLinks.map((link, index) => {
                             const IconComponent = link.icon;
                             return (
                                 <button
                                     key={link.name}
                                     onClick={() => handleSocialClick(link)}
-                                    className="flex items-center gap-4 font-robo hover:bg-white/10 w-70 p-2 rounded-md"
+                                    className={`flex items-center gap-4 font-robo hover:bg-white/10 w-70 p-2 rounded-md transform transition-all duration-700 ease-out ${
+                                        isVisible 
+                                            ? 'opacity-100 translate-x-0' 
+                                            : 'opacity-0 -translate-x-8'
+                                    }`}
+                                    style={{ 
+                                        transitionDelay: isVisible ? `${600 + index * 100}ms` : '0ms' 
+                                    }}
                                     aria-label={link.label}
                                 >
-                                    <IconComponent className="size-12 bg-popover rounded-full p2" />
+                                    <IconComponent className="size-12 bg-popover rounded-full p-2" />
                                     <div>
                                         <h1 className="text-start">{link.name}</h1>
                                         <p className="text-sm text-background/50">{link.profile}</p>
@@ -136,7 +185,12 @@ function Contact() {
                         })}
                     </div>
                 </div>
-                <div className='w-full font-robo flex justify-center'>
+                
+                <div className={`w-full font-robo flex justify-center transform transition-all duration-1000 ease-out delay-1000 ${
+                    isVisible 
+                        ? 'opacity-100 translate-y-0' 
+                        : 'opacity-0 translate-y-8'
+                }`}>
                     <Tabs defaultValue="Contact" className="w-full">
                         <div className="flex justify-center mb-6">
                             <TabsList className="w-full max-w-md">
