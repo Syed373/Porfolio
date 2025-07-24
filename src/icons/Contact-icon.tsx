@@ -1,5 +1,3 @@
-import React from 'react'
-
 function Contact() {
     return (
         <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" fill="background" className="bi bi-envelope-plus-fill size-6" viewBox="0 0 16 15">

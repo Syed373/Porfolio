@@ -145,24 +145,24 @@ function Contact() {
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
                     }`}>
-                    <h1 className="text-4xl text-foreground font-medium bg-background py-1 rounded-lg mx-4">Get in Touch</h1>
-                    <p className="text-background/50 px-10 my-8">Have a project idea, collaboration opportunity, or just want to chat about Fullstack and technology? I'm always open to connecting with fellow builders and creators.</p>
+                    <h1 className="text-3xl sm:text-4xl text-foreground font-medium bg-background py-1 rounded-lg mx-4">Get in Touch</h1>
+                    <p className="text-background/50 px-4 sm:px-10 my-8">Have a project idea, collaboration opportunity, or just want to chat about Fullstack and technology? I'm always open to connecting with fellow builders and creators.</p>
                 </div>
 
-                <div className={`border border-background/50 mt-8 mb-16 w-fit rounded-sm p-8 flex flex-col items-center transform transition-all duration-1000 ease-out delay-400 ${isVisible
+                <div className={`border border-background/50 mt-4 sm:mt-8 mb-12 sm:mb-16 w-full max-w-md sm:w-fit rounded-sm p-4 sm:p-8 flex flex-col items-center transform transition-all duration-1000 ease-out delay-400 ${isVisible
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
                     }`}>
-                    <h1 className="font-robo text-3xl w-fit font-bold">Connect with me</h1>
-                    <p className="text-background/50 px-10 my-2">Choose how you'd like to reach out</p>
-                    <div className="text-white space-y-4 my-6">
+                    <h1 className="font-robo text-2xl sm:text-3xl w-fit font-bold">Connect with me</h1>
+                    <p className="text-background/50 px-2 sm:px-10 my-2 text-center">Choose how you'd like to reach out</p>
+                    <div className="text-white space-y-4 my-6 w-full">
                         {socialLinks.map((link, index) => {
                             const IconComponent = link.icon;
                             return (
                                 <button
                                     key={link.name}
                                     onClick={() => handleSocialClick(link)}
-                                    className={`flex items-center gap-4 font-robo hover:bg-white/10 w-70 p-2 rounded-md transform transition-all duration-700 ease-out ${isVisible
+                                    className={`flex items-center gap-4 font-robo hover:bg-white/10 w-full sm:w-72 p-2 rounded-md transform transition-all duration-700 ease-out ${isVisible
                                             ? 'opacity-100 translate-x-0'
                                             : 'opacity-0 -translate-x-8'
                                         }`}
@@ -171,7 +171,7 @@ function Contact() {
                                     }}
                                     aria-label={link.label}
                                 >
-                                    <IconComponent className="size-12 bg-popover rounded-full p-2" />
+                                    <IconComponent className="size-10 sm:size-12 bg-popover rounded-full p-2" />
                                     <div>
                                         <h1 className="text-start">{link.name}</h1>
                                         <p className="text-sm text-background/50">{link.profile}</p>

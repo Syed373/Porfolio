@@ -1,5 +1,3 @@
-import React from 'react'
-
 type EmailTypes = {
     className: string;
 }

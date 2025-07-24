@@ -37,12 +37,12 @@ function Footer() {
           : 'opacity-0 translate-y-8'
         }`}
     >
-      <div className={`sm:w-1/2 transform transition-all duration-1000 delay-200 ease-out ${isVisible
+      <div className={`sm:w-1/2 flex flex-col items-center sm:items-start transform transition-all duration-1000 delay-200 ease-out ${isVisible
           ? 'opacity-100 translate-x-0'
           : 'opacity-0 -translate-x-4'
         }`}>
         <div className='text-start p-4 text-xl underline underline-offset-8'>Quick Links</div>
-        <div className='space-x-8 flex flex-col justify-center items-start px-4'>
+        <div className='space-y-3 sm:space-y-0 sm:space-x-8 flex flex-col justify-center items-center sm:items-start px-4'>
           <Link
             to="Home"
             smooth={true}
@@ -93,15 +93,15 @@ function Footer() {
           </Link>
         </div>
       </div>
-      <div className={`bg-background/20 mt-8 mb-2 sm:h-40 h-0.25 max-w-lg ml-4 mr-2 sm:w-0.25 transform transition-all duration-1000 delay-300 ease-out ${isVisible
+      <div className={`bg-background/20 mt-8 mb-2 sm:h-40 h-[1px] w-full sm:w-[1px] sm:ml-4 sm:mr-2 transform transition-all duration-1000 delay-300 ease-out ${isVisible
           ? 'opacity-100 scale-y-100'
           : 'opacity-0 scale-y-0'
         }`} />
-      <div className={`text-center text-sm text-background/50 space-y-4 mx-4 mt-6 transform transition-all duration-1000 delay-400 ease-out ${isVisible
+      <div className={`sm:w-1/2 text-center sm:text-left text-sm text-background/50 space-y-4 mx-4 mt-6 transform transition-all duration-1000 delay-400 ease-out ${isVisible
           ? 'opacity-100 translate-x-0'
           : 'opacity-0 translate-x-4'
         }`}>
-        <h1 className='flex justify-center items-center'>© {new Date().getFullYear()} Syed Umair. All rights reserved.</h1>
+        <h1 className='flex justify-center sm:justify-start items-center'>© {new Date().getFullYear()} Syed Umair. All rights reserved.</h1>
         <h1>Built with React, Typescript, TailwindCSS, shadcn/ui and Web3forms</h1>
       </div>
     </div>

@@ -210,14 +210,14 @@ function About() {
         <div ref={aboutRef}>
             <Element
                 name="About"
-                className={`max-w-3xl py-6 px-4 mx-auto border font-robo text-background border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm transform transition-all duration-1000 ease-out ${isVisible
+                className={`max-w-3xl py-6 px-2 sm:px-4 mx-auto border font-robo text-background border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm transform transition-all duration-1000 ease-out ${isVisible
                     ? 'opacity-100 translate-y-0 scale-100'
                     : 'opacity-0 translate-y-12 scale-95'
                     }`}
             >
                 <div className='p-2 flex flex-col items-center'>
 
-                    <h1 className={`text-4xl text-foreground w-full font-bold bg-background py-2 rounded-lg mx-8 text-center mb-8 transform transition-all duration-1000 ease-out delay-200 ${isVisible
+                    <h1 className={`text-3xl sm:text-4xl text-foreground w-full font-bold bg-background py-2 rounded-lg mx-4 sm:mx-8 text-center mb-6 sm:mb-8 transform transition-all duration-1000 ease-out delay-200 ${isVisible
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
                         }`}>
@@ -227,13 +227,13 @@ function About() {
                     <img
                         src="/Profile_img.png"
                         alt="Profile image"
-                        className={`h-50 my-8 rounded-lg transform transition-all duration-1000 ease-out delay-400 ${isVisible
+                        className={`h-40 sm:h-48 my-6 sm:my-8 rounded-lg transform transition-all duration-1000 ease-out delay-400 ${isVisible
                             ? 'opacity-100 translate-y-0 scale-100'
                             : 'opacity-0 translate-y-8 scale-90'
                             }`}
                     />
 
-                    <div className={`text-center text-2xl max-w-xl pt-4 min-h-40 transform transition-all duration-1000 ease-out delay-600 ${isVisible
+                    <div className={`text-center text-lg sm:text-2xl max-w-xl pt-4 min-h-[12rem] sm:min-h-40 transform transition-all duration-1000 ease-out delay-600 ${isVisible
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
                         }`}>
@@ -247,16 +247,16 @@ function About() {
                         ? 'opacity-100 translate-y-0'
                         : 'opacity-0 translate-y-8'
                         }`}>
-                        <h2 className="text-3xl text-foreground font-medium text-center mb-8 bg-background w-full p-2 rounded-lg">
+                        <h2 className="text-2xl sm:text-3xl text-foreground font-medium text-center mb-8 bg-background w-full p-2 rounded-lg">
                             Tech Stack
                         </h2>
                         <div className='w-full font-robo flex justify-center'>
                             <Tabs defaultValue="Frontend" className="w-full">
                                 <div className="flex justify-center mb-6">
-                                    <TabsList className="w-full max-w-2xl">
+                                    <TabsList className="w-full max-w-2xl flex-wrap h-auto sm:h-10">
                                         {categoryLabels.split(",").map((item, index) => {
                                             return (
-                                                <TabsTrigger key={index} value={item.trim()} className="flex-1">
+                                                <TabsTrigger key={index} value={item.trim()} className="flex-1min-w-[90px]">
                                                     {item.trim()}
                                                 </TabsTrigger>
                                             )
@@ -268,12 +268,12 @@ function About() {
                                     const category = item.trim();
                                     return (
                                         <TabsContent key={index} value={category} className="w-full max-w-2xl mx-auto">
-                                            <div className='grid grid-cols-2 sm:grid-cols-3 gap-4 px-4'>
+                                            <div className='grid grid-cols-2 sm:grid-cols-3 gap-3 sm:gap-4 px-2 sm:px-4'>
                                                 {skillsConfig.filter(skill => skill.category === category).map((skill, skillIndex) => {
                                                     return (
                                                         <div
                                                             key={skillIndex}
-                                                            className={`flex flex-row items-center px-8 py-4 rounded-lg transition-all duration-300 cursor-default ${skill.bgColor} border border-white/10 hover:border-white/20 hover:scale-105 transform ${isVisible
+                                                            className={`flex flex-row items-center p-3 sm:px-4 sm:py-4 rounded-lg transition-all duration-300 cursor-default ${skill.bgColor} border border-white/10 hover:border-white/20 hover:scale-105 transform ${isVisible
                                                                 ? 'opacity-100 translate-y-0'
                                                                 : 'opacity-0 translate-y-4'
                                                                 }`}
@@ -281,10 +281,10 @@ function About() {
                                                                 transitionDelay: isVisible ? `${1000 + skillIndex * 100}ms` : '0ms'
                                                             }}
                                                         >
-                                                            <div className="text-2xl mb-2">
-                                                                <img src={skill.icon} alt="Skill-Icon" className='h-10 w-10 bg-background rounded p-1' />
+                                                            <div className="text-2xl ">
+                                                                <img src={skill.icon} alt="Skill-Icon" className='h-8 w-8 sm:h-10 sm:w-10 bg-background rounded p-1 m-4' />
                                                             </div>
-                                                            <div className='flex flex-col justify-center ml-4'>
+                                                            <div className='flex flex-col justify-center ml:3 sm:ml-4'>
                                                                 <div className={`text-sm font-medium`}>
                                                                     {skill.name}
                                                                 </div>

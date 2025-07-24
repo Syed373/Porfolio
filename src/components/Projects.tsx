@@ -90,11 +90,11 @@ function Projects() {
     return (
         <Element name="Projects">
             <div
-                className="max-w-3xl text-background font-robo pb-20 mx-auto border-1 border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm"
+                className="max-w-3xl text-background font-robo pb-20 mx-auto border-1 border-white/30 shadow-sm shadow-white/50 h-fit my-2 rounded-xl backdrop-blur-sm px-4"
                 ref={projectsRef}
             >
                 <div
-                    className={`max-w-2xl text-4xl text-foreground font-medium bg-background rounded-lg m-4 md:ml-12 md:my-8 p-1 text-center transform transition-all duration-1000 ease-out ${isVisible
+                    className={`max-w-2xl text-4xl sm:text-4xl text-foreground font-medium bg-background rounded-lg mx-auto mt-8 sm:m-4 md:ml-12 md:my-8 p-1 text-center transform transition-all duration-1000 ease-out ${isVisible
                             ? 'translate-y-0 opacity-100'
                             : 'translate-y-8 opacity-0'
                         }`}
@@ -104,7 +104,7 @@ function Projects() {
                 </div>
 
                 <div
-                    className={`w-full p-4 md:py-0 md:px-16 text-background/60 transform transition-all duration-1000 ease-out ${isVisible
+                    className={`w-full p-4 sm:px-8 md:px-16 text-background/60 transform transition-all duration-1000 ease-out ${isVisible
                             ? 'translate-y-0 opacity-100'
                             : 'translate-y-8 opacity-0'
                         }`}
@@ -113,17 +113,17 @@ function Projects() {
                     A selection of my recent projects, focused on Frontend, Backend, and Fullstack. Each project represents a step in my journey as a builder.
                 </div>
 
-                <div className='m-10 px-2 space-y-4'>
+                <div className='mt-6 sm:m-10 px-0 sm:px-2 space-y-8 sm:space-y-4'>
                     {Projects.map((item, index) => {
                         const Tech = item.tech;
                         return (
                             <div
                                 key={index}
-                                className={`flex ${(index % 2) ? "justify-end" : "justify-start"} h-fit p-1`}
+                                className={`flex justify-center ${(index % 2) ? "md:justify-end" : "md:justify-start"} h-fit p-1`}
                                 ref={el => { projectRefs.current[index] = el; }}
                             >
                                 <div
-                                    className={`border-1 pb-10 h-full p-2 rounded-md w-sm transform transition-all duration-1000 ease-out ${visibleProjects.includes(index)
+                                    className={`border-1 pb-10 h-full p-2 rounded-md w-full max-w-md transform transition-all duration-1000 ease-out ${visibleProjects.includes(index)
                                             ? 'translate-y-0 opacity-100 scale-100'
                                             : 'translate-y-12 opacity-0 scale-95'
                                         }`}
@@ -131,20 +131,20 @@ function Projects() {
                                         transitionDelay: `${600 + (index * 200)}ms`,
                                     }}
                                 >
-                                    <div className='h-fit overflow-hidden rounded-md transform transition-transform duration-500 hover:scale-105'>
+                                    <div className='h-fit overflow-hidden rounded-md transform transition-transform duration-500'>
                                         <img src={item.image} alt={item.title} />
                                     </div>
 
                                     <div className='p-2 text-lg'>{item.title}</div>
 
-                                    <div className='px-3 w-fit text-background/50 text-xs'>{item.description}</div>
+                                    <div className='px-3 w-fit text-background/50 text-sm  sm:text-xs'>{item.description}</div>
 
-                                    <div className='p-3 space-x-1'>
+                                    <div className='p-3 space-x-1 flex flex-wrap gap-2'>
                                         {Tech.split(',').map((TechUsed, keys) => {
                                             return (
                                                 <button
                                                     key={keys}
-                                                    className='text-sm bg-background hover:bg-foreground hover:text-background hover:border-1 hover:border-background transition-all duration-300 ease-in-out border-1 text-foreground rounded-full px-2 font-bold transform hover:scale-105'
+                                                    className='text-xs sm:text-sm bg-background hover:bg-foreground hover:text-background hover:border-1 hover:border-background transition-all duration-300 ease-in-out border-1 text-foreground rounded-full px-2 font-bold transform hover:scale-105'
                                                 >
                                                     {TechUsed}
                                                 </button>

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 
 type GlitchTextProps = {
   Sentences: string[];
@@ -8,7 +8,7 @@ type GlitchTextProps = {
 function GlitchText({Sentences, time}: GlitchTextProps) {
 
     const [currentIndex, setCurrentIndex] = useState(0);
-    const [isGlitching, setIsGlitching] = useState(false);
+    const [, setIsGlitching] = useState(false);
     const [displayText, setDisplayText] = useState(Sentences[0]);
 
     useEffect(() => {
@@ -30,7 +30,7 @@ function GlitchText({Sentences, time}: GlitchTextProps) {
                         // Phase 1: Convert to binary-like characters
                         glitchedText = originalText
                             .split('')
-                            .map((char, index) => {
+                            .map((char) => {
                                 if (Math.random() < 0.7 && char !== ' ') {
                                     return roboticChars[Math.floor(Math.random() * roboticChars.length)];
                                 }
@@ -41,7 +41,7 @@ function GlitchText({Sentences, time}: GlitchTextProps) {
                         // Phase 2: Mix of original and binary
                         glitchedText = originalText
                             .split('')
-                            .map((char, index) => {
+                            .map((char) => {
                                 if (Math.random() < 0.4 && char !== ' ') {
                                     return roboticChars[Math.floor(Math.random() * roboticChars.length)];
                                 }
@@ -52,7 +52,7 @@ function GlitchText({Sentences, time}: GlitchTextProps) {
                         // Phase 3: Mostly original with occasional glitches
                         glitchedText = originalText
                             .split('')
-                            .map((char, index) => {
+                            .map((char) => {
                                 if (Math.random() < 0.1 && char !== ' ') {
                                     return roboticChars[Math.floor(Math.random() * roboticChars.length)];
                                 }

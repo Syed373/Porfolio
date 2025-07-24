@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { v4 as uuidv4 } from 'uuid';
 
 const MouseTrail: React.FC = () => {
-  const [scrolled, setScrolled] = useState(false);
+  const [, setScrolled] = useState(false);
   const [cursorTrail, setCursorTrail] = useState<{ x: number; y: number; id: string }[]>([]);
 
   useEffect(() => {
